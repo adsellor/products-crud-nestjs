@@ -19,9 +19,9 @@ export class ProductsController {
   async find(
     @Query()
     query: {
-      page?: number,
-      pageLimit?: number
-    }
+      page?: number;
+      pageLimit?: number;
+    },
   ) {
     return this.productsService.getAll(query.page, query.pageLimit);
   }

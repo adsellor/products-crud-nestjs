@@ -12,11 +12,11 @@ export class GetProductsHandler implements IQueryHandler<GetProductsQuery> {
     private productRepository: BetterSQLite3Database<typeof productsSchema>,
   ) {}
 
-  async execute({page = 0, pageSize = 1}: GetProductsQuery) {
+  async execute({ page = 0, pageSize = 1 }: GetProductsQuery) {
     try {
       const products = await this.productRepository.query.Product.findMany({
         limit: pageSize,
-        offset:  (page - 1) * pageSize,
+        offset: (page - 1) * pageSize,
         with: {
           category: true,
         },
