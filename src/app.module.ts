@@ -1,23 +1,31 @@
 import { DrizzleBetterSQLiteModule } from '@knaadh/nestjs-drizzle-better-sqlite3';
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
-import * as productsSchema from '../db/schema/products'
-import * as categoriesSchema from '../db/schema/categories'
-import * as relationsSchema from '../db/schema/relations'
+import { ProductsModule } from './products/products.module';
+
+import * as productsSchema from '../db/schema/products';
+import * as categoriesSchema from '../db/schema/categories';
+import * as relationsSchema from '../db/schema/relations';
+
+const schema = {
+  ...productsSchema,
+  ...categoriesSchema,
+  ...relationsSchema,
+};
 
 @Module({
   imports: [
+    ProductsModule,
     DrizzleBetterSQLiteModule.register({
-      tag: 'DB_ENV',
+      tag: 'DB_SQLITE',
       sqlite3: {
-        filename: 'db.sql'
+        filename: 'db.sql',
       },
       config: {
-        schema: { ...productsSchema, ...categoriesSchema, ...relationsSchema }
-      }
-    })
+        schema: { ...schema },
+      },
+    }),
   ],
   controllers: [AppController],
 })
-
-export class AppModule { }
+export class AppModule {}

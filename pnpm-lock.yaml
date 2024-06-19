@@ -13,7 +13,7 @@ dependencies:
     version: 0.6.2
   '@nestjs/common':
     specifier: ^9.0.0
-    version: 9.4.3(reflect-metadata@0.1.14)(rxjs@7.8.1)
+    version: 9.4.3(class-transformer@0.5.1)(class-validator@0.7.3)(reflect-metadata@0.1.14)(rxjs@7.8.1)
   '@nestjs/core':
     specifier: ^9.0.0
     version: 9.4.3(@nestjs/common@9.4.3)(@nestjs/platform-express@9.4.3)(reflect-metadata@0.1.14)(rxjs@7.8.1)
@@ -26,9 +26,18 @@ dependencies:
   better-sqlite3:
     specifier: ^11.0.0
     version: 11.0.0
+  class-transformer:
+    specifier: ^0.5.1
+    version: 0.5.1
+  class-validator:
+    specifier: ^0.7.3
+    version: 0.7.3
   drizzle-orm:
     specifier: ^0.31.2
     version: 0.31.2(@libsql/client@0.6.2)(better-sqlite3@11.0.0)
+  nanoid:
+    specifier: 3.3.4
+    version: 3.3.4
   reflect-metadata:
     specifier: ^0.1.13
     version: 0.1.14
@@ -1272,7 +1281,7 @@ packages:
       better-sqlite3: '>=7'
       drizzle-orm: '>=0.28.6'
     dependencies:
-      '@nestjs/common': 9.4.3(reflect-metadata@0.1.14)(rxjs@7.8.1)
+      '@nestjs/common': 9.4.3(class-transformer@0.5.1)(class-validator@0.7.3)(reflect-metadata@0.1.14)(rxjs@7.8.1)
       better-sqlite3: 11.0.0
       drizzle-orm: 0.31.2(@libsql/client@0.6.2)(better-sqlite3@11.0.0)
       tslib: 2.6.3
@@ -1420,7 +1429,7 @@ packages:
       - webpack-cli
     dev: true
 
-  /@nestjs/common@9.4.3(reflect-metadata@0.1.14)(rxjs@7.8.1):
+  /@nestjs/common@9.4.3(class-transformer@0.5.1)(class-validator@0.7.3)(reflect-metadata@0.1.14)(rxjs@7.8.1):
     resolution: {integrity: sha512-Gd6D4IaYj01o14Bwv81ukidn4w3bPHCblMUq+SmUmWLyosK+XQmInCS09SbDDZyL8jy86PngtBLTdhJ2bXSUig==}
     peerDependencies:
       cache-manager: <=5
@@ -1436,6 +1445,8 @@ packages:
       class-validator:
         optional: true
     dependencies:
+      class-transformer: 0.5.1
+      class-validator: 0.7.3
       iterare: 1.2.1
       reflect-metadata: 0.1.14
       rxjs: 7.8.1
@@ -1460,7 +1471,7 @@ packages:
       '@nestjs/websockets':
         optional: true
     dependencies:
-      '@nestjs/common': 9.4.3(reflect-metadata@0.1.14)(rxjs@7.8.1)
+      '@nestjs/common': 9.4.3(class-transformer@0.5.1)(class-validator@0.7.3)(reflect-metadata@0.1.14)(rxjs@7.8.1)
       '@nestjs/platform-express': 9.4.3(@nestjs/common@9.4.3)(@nestjs/core@9.4.3)
       '@nuxtjs/opencollective': 0.3.2
       fast-safe-stringify: 2.1.1
@@ -1481,7 +1492,7 @@ packages:
       reflect-metadata: ^0.1.13 || ^0.2.0
       rxjs: ^7.2.0
     dependencies:
-      '@nestjs/common': 9.4.3(reflect-metadata@0.1.14)(rxjs@7.8.1)
+      '@nestjs/common': 9.4.3(class-transformer@0.5.1)(class-validator@0.7.3)(reflect-metadata@0.1.14)(rxjs@7.8.1)
       '@nestjs/core': 9.4.3(@nestjs/common@9.4.3)(@nestjs/platform-express@9.4.3)(reflect-metadata@0.1.14)(rxjs@7.8.1)
       reflect-metadata: 0.1.14
       rxjs: 7.8.1
@@ -1494,7 +1505,7 @@ packages:
       '@nestjs/common': ^9.0.0
       '@nestjs/core': ^9.0.0
     dependencies:
-      '@nestjs/common': 9.4.3(reflect-metadata@0.1.14)(rxjs@7.8.1)
+      '@nestjs/common': 9.4.3(class-transformer@0.5.1)(class-validator@0.7.3)(reflect-metadata@0.1.14)(rxjs@7.8.1)
       '@nestjs/core': 9.4.3(@nestjs/common@9.4.3)(@nestjs/platform-express@9.4.3)(reflect-metadata@0.1.14)(rxjs@7.8.1)
       body-parser: 1.20.2
       cors: 2.8.5
@@ -1531,7 +1542,7 @@ packages:
       '@nestjs/platform-express':
         optional: true
     dependencies:
-      '@nestjs/common': 9.4.3(reflect-metadata@0.1.14)(rxjs@7.8.1)
+      '@nestjs/common': 9.4.3(class-transformer@0.5.1)(class-validator@0.7.3)(reflect-metadata@0.1.14)(rxjs@7.8.1)
       '@nestjs/core': 9.4.3(@nestjs/common@9.4.3)(@nestjs/platform-express@9.4.3)(reflect-metadata@0.1.14)(rxjs@7.8.1)
       '@nestjs/platform-express': 9.4.3(@nestjs/common@9.4.3)(@nestjs/core@9.4.3)
       tslib: 2.5.3
@@ -2493,6 +2504,14 @@ packages:
   /cjs-module-lexer@1.3.1:
     resolution: {integrity: sha512-a3KdPAANPbNE4ZUv9h6LckSl9zLsYOP4MBmhIPkRaeyybt+r4UghLvq+xw/YwUcC1gqylCkL4rdVs3Lwupjm4Q==}
     dev: true
+
+  /class-transformer@0.5.1:
+    resolution: {integrity: sha512-SQa1Ws6hUbfC98vKGxZH3KFY0Y1lm5Zm0SY8XX9zbK7FJCyVEac3ATW0RIpwzW+oOfmHE5PMPufDG9hCfoEOMw==}
+
+  /class-validator@0.7.3:
+    resolution: {integrity: sha512-aRRlS1WlQ+52aHlmDCDX5dLwtpbg9is7i9yYhzQosTAVs86nX0Um8hb7ChTwMn7jfpyxxjAZpBrlrAc2tqNpYA==}
+    dependencies:
+      validator: 7.2.0
 
   /cli-cursor@3.1.0:
     resolution: {integrity: sha512-I/zHAwsKf9FqGoXM4WWRACob9+SNukZTd94DWF57E4toouRulbCxcUh6RKUEOQlYTHJnzkPMySvPNaaSLNfLZw==}
@@ -4659,6 +4678,12 @@ packages:
     resolution: {integrity: sha512-nnbWWOkoWyUsTjKrhgD0dcz22mdkSnpYqbEjIm2nhwhuxlSkpywJmBo8h0ZqJdkp73mb90SssHkN4rsRaBAfAA==}
     dev: true
 
+  /nanoid@3.3.4:
+    resolution: {integrity: sha512-MqBkQh/OHTS2egovRtLk45wEyNXwF+cokD+1YPf9u5VfJiRdAiRwB2froX5Co9Rh20xs4siNPm8naNotSD6RBw==}
+    engines: {node: ^10 || ^12 || ^13.7 || ^14 || >=15.0.1}
+    hasBin: true
+    dev: false
+
   /napi-build-utils@1.0.2:
     resolution: {integrity: sha512-ONmRUqK7zj7DWX0D9ADe03wbwOBZxNAfF20PlGfCWQcD3+/MakShIHrMqx9YwPTfxDdF1zLeL+RGZiR9kGMLdg==}
     dev: false
@@ -5842,6 +5867,10 @@ packages:
       '@types/istanbul-lib-coverage': 2.0.6
       convert-source-map: 2.0.0
     dev: true
+
+  /validator@7.2.0:
+    resolution: {integrity: sha512-c8NGTUYeBEcUIGeMppmNVKHE7wwfm3mYbNZxV+c5mlv9fDHI7Ad3p07qfNrn/CvpdkK2k61fOLRO2sTEhgQXmg==}
+    engines: {node: '>= 0.10'}
 
   /vary@1.1.2:
     resolution: {integrity: sha512-BNGbWLfd0eUPabhkXUVm0j8uuvREyTh5ovRa/dyow/BqAbZJyC+5fU+IzQOzmAKzYqYRAISoRhdQr3eIZ/PXqg==}

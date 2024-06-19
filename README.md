@@ -43,6 +43,11 @@ $ pnpm run start:dev
 
 # production mode
 $ pnpm run start:prod
+
+# migrate database
+$ pnpm run migration:generate
+$ pnpm run migration:run
+
 ```
 
 ## Test
